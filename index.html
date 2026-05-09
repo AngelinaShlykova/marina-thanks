@@ -118,6 +118,23 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+
+        /* Новый класс для одинакового размера */
+        .card-image {
+            max-width: 600px; /* Фиксируем ширину */
+            width: 100%;
+            margin: 20px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Лёгкая тень */
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -148,36 +165,35 @@
         <div class="hearts">✨ 🌸 ✨ 🧘‍♀️ ✨ 🌸 ✨</div>
 
         <!-- Секция с сертификатом -->
-        <div class="gift-section">
-            <h2>🎁 А теперь — наш подарок тебе</h2>
-            <p>
-                Марина, ты дарила нам отдых душой и телом.<br>
-                Теперь пришла наша очередь позаботиться о тебе!
-            </p>
-            <span class="highlight">
-                Сертификат в твой любимый спа — чтобы ты могла отдохнуть от нас, выдохнуть и восстановить силы 🕊️
-            </span>
-            <p style="font-size: 1.1em; color: #666;">
-                Массаж, тишина, ароматы и ни одной задачи «по группе» — только ты и забота о себе.
-            </p>
-
-            <!-- Сертификат (просто картинка, без ссылки) -->
-            <div class="certificate-wrapper">
-                <img src="https://sun9-66.userapi.com/s/v1/ig2/Aad2P9xkUUJTV52u7T_UKbz2v76neBa6l63otzJrXbKVOLpZSkXUBenmmqjbvLbrA9EkxJxWknnkCT0EENbd2n2U.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=ad70AxtzbFaQiXuOU7Hqi6NvCd69iidOc2YsomtFDfo&cs=1280x0" alt="Сертификат в спа">
-            </div>
-
-            <!-- Инструкция по использованию сертификата -->
-            <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 15px; border: 2px dashed #e1bee7;">
-                <!-- 🔧 ВСТАВЬ СЮДА ССЫЛКУ НА ВТОРУЮ КАРТИНКУ -->
-                <img src="https://sun9-84.userapi.com/s/v1/ig2/Z3lIN0O6gUZ9P8t8QoNzHwWRnqzDti5MyCWT4Tr7YV1LeBl0iSqzGxmH6yhfyyFqrIpi1giTniJaVV9toUuoSRka.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=Jzz2rmufC44k-N_iM2JWoM8UtGiR7ptOWhgoAC80WmA&cs=1280x0" alt="Как использовать сертификат" style="max-width: 100%; border-radius: 10px; box-shadow: none; margin: 0;">
-            </div>
+    <div class="gift-section">
+        <h2>🎁 А теперь — наш подарок тебе</h2>
+        <p>
+            Марина, ты дарила нам отдых душой и телом.<br>
+            Теперь пришла наша очередь позаботиться о тебе!
+        </p>
+        <span class="highlight">
+            Сертификат в твой любимый спа — чтобы ты могла отдохнуть от нас, выдохнуть и восстановить силы 🕊️
+        </span>
+    
+        <!-- 1. Сам сертификат -->
+        <div class="card-image">
+            <img src="https://sun9-66.userapi.com/s/v1/ig2/Aad2P9xkUUJTV52u7T_UKbz2v76neBa6l63otzJrXbKVOLpZSkXUBenmmqjbvLbrA9EkxJxWknnkCT0EENbd2n2U.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=ad70AxtzbFaQiXuOU7Hqi6NvCd69iidOc2YsomtFDfo&cs=1280x0" alt="Сертификат">
         </div>
-
+    
+        <p style="text-align: center; color: #666; font-size: 0.9em; margin: 10px 0;">
+            📜 <em>Правила использования:</em>
+        </p>
+    
+        <!-- 2. Правила (обратная сторона) -->
+        <!-- Тут я оставил пунктирную рамку, как тебе нравилось, но размер теперь такой же -->
+        <div class="card-image" style="border: 2px dashed #d1c4e9; box-shadow: none; background: #fafafa;">
+            <img src="https://sun9-84.userapi.com/s/v1/ig2/Z3lIN0O6gUZ9P8t8QoNzHwWRnqzDti5MyCWT4Tr7YV1LeBl0iSqzGxmH6yhfyyFqrIpi1giTniJaVV9toUuoSRka.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=Jzz2rmufC44k-N_iM2JWoM8UtGiR7ptOWhgoAC80WmA&cs=1280x0" alt="Правила использования сертификата">
+        </div>
         <footer>
-            С любовью и бесконечной благодарностью,<br>
-            твои шесть девушек 🤍
+                С любовью и бесконечной благодарностью,<br>
+                твои шесть девушек 🤍
         </footer>
-    </div>
+</div>
     
     <!-- 🔧 Музыка: замените src на вашу ссылку -->
     <audio id="music" loop>
