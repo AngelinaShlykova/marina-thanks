@@ -195,13 +195,12 @@
         </footer>
 </div>
     
-    <!-- 🔧 Музыка -->
+  <!-- 🔧 Музыка -->
     <audio id="music" loop preload="auto">
-        <!-- ВРЕМЕННО: проверенная ссылка для теста -->
         <source src="https://ia902806.us.archive.org/11/items/psiMaster/psiMaster.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Кнопка (появится, если автозапуск не сработает) -->
+    <!-- Кнопка -->
     <button id="play-btn" style="
         display: none;
         margin: 30px auto 10px;
@@ -217,27 +216,39 @@
         🎵 Включить музыку
     </button>
 
-    <!-- ОДИН простой скрипт -->
+    <!-- ОДИН скрипт -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const audio = document.getElementById("music");
             const btn = document.getElementById("play-btn");
             let played = false;
 
-            function play() {
+            function playMusic() {
                 if (played) return;
                 played = true;
+                
                 audio.play()
-                    .then(() => { if (btn) btn.style.display = "none"; })
-                    .catch(() => { if (btn) btn.style.display = "inline-block"; });
+                    .then(() => {
+                        console.log("✅ Музыка запущена");
+                        if (btn) btn.style.display = "none";
+                    })
+                    .catch((err) => {
+                        console.warn("⚠️ Ошибка:", err.message);
+                        if (btn) btn.style.display = "inline-block";
+                    });
             }
 
-            // Запуск по первому касанию
-            document.addEventListener("click", play, { once: true });
-            document.addEventListener("touchstart", play, { once: true });
+            // Запуск по клику/касанию
+            document.addEventListener("click", playMusic, { once: true });
+            document.addEventListener("touchstart", playMusic, { once: true });
 
             // Кнопка как запасной вариант
-            if (btn) btn.addEventListener("click", (e) => { e.stopPropagation(); play(); });
+            if (btn) {
+                btn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    playMusic();
+                });
+            }
         });
     </script>
 </body>
