@@ -195,61 +195,63 @@
         </footer>
 </div>
     
-  <!-- 🔧 Музыка -->
-    <audio id="music" loop preload="auto">
-        <source src="https://ia902806.us.archive.org/11/items/psiMaster/psiMaster.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Кнопка -->
+  <!-- Замени весь блок с музыкой на это -->
+<div style="margin: 30px 0;">
     <button id="play-btn" style="
-        display: none;
-        margin: 30px auto 10px;
-        padding: 12px 24px;
-        background: #9c27b0;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, #9c27b0, #ba68c8);
         color: white;
         border: none;
-        border-radius: 30px;
-        font-size: 1.1em;
+        border-radius: 50px;
+        font-size: 1.2em;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(156,39,176,0.3);
+        box-shadow: 0 6px 20px rgba(156,39,176,0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
     ">
-        🎵 Включить музыку
+        <span>🎵</span>
+        <span>Включить музыку</span>
     </button>
+    <p style="font-size: 0.9em; color: #7b1fa2; margin-top: 10px;">
+        Нажмите кнопку, чтобы включить фоновую музыку 💜
+    </p>
+</div>
 
-    <!-- ОДИН скрипт -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const audio = document.getElementById("music");
-            const btn = document.getElementById("play-btn");
-            let played = false;
+<audio id="music" loop preload="auto">
+    <source src="https://ia902806.us.archive.org/11/items/psiMaster/psiMaster.mp3" type="audio/mpeg">
+</audio>
 
-            function playMusic() {
-                if (played) return;
-                played = true;
-                
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const audio = document.getElementById("music");
+        const btn = document.getElementById("play-btn");
+        const btnText = btn.querySelector("span:last-child");
+        const btnIcon = btn.querySelector("span:first-child");
+        let isPlaying = false;
+
+        btn.addEventListener("click", function() {
+            if (!isPlaying) {
                 audio.play()
                     .then(() => {
-                        console.log("✅ Музыка запущена");
-                        if (btn) btn.style.display = "none";
+                        isPlaying = true;
+                        btnText.textContent = "Пауза";
+                        btnIcon.textContent = "⏸️";
+                        btn.style.background = "linear-gradient(135deg, #7b1fa2, #9c27b0)";
                     })
                     .catch((err) => {
-                        console.warn("⚠️ Ошибка:", err.message);
-                        if (btn) btn.style.display = "inline-block";
+                        console.error("Ошибка воспроизведения:", err);
+                        alert("Не удалось воспроизвести музыку. Попробуйте обновить страницу.");
                     });
-            }
-
-            // Запуск по клику/касанию
-            document.addEventListener("click", playMusic, { once: true });
-            document.addEventListener("touchstart", playMusic, { once: true });
-
-            // Кнопка как запасной вариант
-            if (btn) {
-                btn.addEventListener("click", function(e) {
-                    e.stopPropagation();
-                    playMusic();
-                });
+            } else {
+                audio.pause();
+                isPlaying = false;
+                btnText.textContent = "Включить музыку";
+                btnIcon.textContent = "🎵";
+                btn.style.background = "linear-gradient(135deg, #9c27b0, #ba68c8)";
             }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
