@@ -22,6 +22,65 @@
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(156, 39, 176, 0.15);
         }
+        
+        /* Стили для кнопки музыки */
+        .music-button-wrapper {
+            margin: 20px 0 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: 20px;
+            border: 2px solid #ce93d8;
+        }
+        
+        #play-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #9c27b0, #ba68c8);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(156,39,176,0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            animation: pulse-button 2s infinite;
+        }
+        
+        #play-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(156,39,176,0.6);
+        }
+        
+        #play-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        #play-btn.playing {
+            animation: none;
+            background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+        }
+        
+        @keyframes pulse-button {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 6px 25px rgba(156,39,176,0.5);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 8px 30px rgba(156,39,176,0.7);
+            }
+        }
+        
+        .music-hint {
+            margin-top: 12px;
+            font-size: 1em;
+            color: #6a1b9a;
+            font-style: italic;
+        }
+        
         h1 {
             font-size: 2.2em;
             margin: 20px 0 30px;
@@ -56,7 +115,6 @@
             transform: scale(1.02);
         }
         
-        /* Секция сертификата */
         .gift-section {
             margin: 40px 0;
             padding: 25px;
@@ -72,31 +130,20 @@
             display: block;
             margin: 15px 0;
         }
-        .certificate-wrapper {
-            margin: 25px auto;
-            max-width: 500px;
-            position: relative;
-            border: 4px solid #f3e5f5;
-            border-radius: 16px;
+        .card-image {
+            max-width: 600px;
+            width: 100%;
+            margin: 20px auto;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-            cursor: pointer;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .certificate-wrapper img {
+        
+        .card-image img {
             width: 100%;
             height: auto;
             display: block;
-            margin: 0;
-            border-radius: 12px;
-        }
-        .certificate-wrapper:hover {
-            box-shadow: 0 12px 35px rgba(156, 39, 176, 0.3);
-        }
-        .cta-text {
-            font-style: italic;
-            color: #7b1fa2;
-            margin-top: 15px;
-            font-size: 1.1em;
         }
         
         footer {
@@ -108,7 +155,6 @@
             font-size: 1.2em;
         }
         
-        /* Анимация сердечек */
         .hearts {
             font-size: 1.5em;
             margin: 20px 0;
@@ -118,40 +164,29 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-
-        /* Новый класс для одинакового размера */
-        .card-image {
-            max-width: 600px; /* Фиксируем ширину */
-            width: 100%;
-            margin: 20px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Лёгкая тень */
-        }
-        
-        .card-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Заголовок -->
+        
+        <!-- КНОПКА МУЗЫКИ В НАЧАЛЕ -->
+        <div class="music-button-wrapper">
+            <button id="play-btn">
+                <span id="btn-icon">▶️</span>
+                <span id="btn-text">Включить музыку</span>
+            </button>
+            <p class="music-hint">🎵 Нажми на плей, чтобы включить атмосферу 💜</p>
+        </div>
+        
         <h1>💜 Дорогая Марина! 💜</h1>
         
-        <!-- Общее фото группы -->
-        <!-- 🔧 Замените src на ссылку на ваше фото -->
         <img src="https://sun9-69.userapi.com/s/v1/ig2/rjoR92_LcqHiIFJ3H-Ji-KKX7nvJbcSlexvgifZ1ld2OqscNrallG5s89uqamb80A_NST6ekXGBu8NlpJ1BgBxfY.jpg?quality=95&as=32x57,48x85,72x128,108x192,160x284,240x427,360x640,480x853,540x960,640x1138,720x1280&from=bu&u=qXmiBOSDvK0Sbr7GfwOX1VrIItVO-S3eLZDcWxqsqk4&cs=720x0" alt="Мы в Дагестане">
         
         <p class="intro">
             От всей души благодарим тебя за этот волшебный ретрит в Дагестане!
         </p>
 
-        <!-- Текст благодарности -->
         <p>
             Мы, шесть девушек, хотим сказать тебе огромное спасибо ❤️
         </p>
@@ -162,96 +197,78 @@
             За твою бесконечную доброту, заботу и внимание к каждой из нас — ты создавала пространство, где каждая чувствовала себя важной и услышанной.
         </p>
         
-        <div class="hearts">✨ 🌸 ✨ 🧘‍♀️ ✨ 🌸 ✨</div>
+        <div class="hearts">✨ 🌸 ✨ ‍♀️ ✨ 🌸 ✨</div>
 
-        <!-- Секция с сертификатом -->
-    <div class="gift-section">
-        <h2>🎁 А теперь — наш подарок тебе</h2>
-        <p>
-            Марина, ты дарила нам отдых душой и телом.<br>
-            Теперь пришла наша очередь позаботиться о тебе!
-        </p>
-        <span class="highlight">
-            Сертификат в твой любимый спа — чтобы ты могла отдохнуть от нас, выдохнуть и восстановить силы 🕊️
-        </span>
-    
-        <!-- 1. Сам сертификат -->
-        <div class="card-image">
-            <img src="https://sun9-66.userapi.com/s/v1/ig2/Aad2P9xkUUJTV52u7T_UKbz2v76neBa6l63otzJrXbKVOLpZSkXUBenmmqjbvLbrA9EkxJxWknnkCT0EENbd2n2U.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=ad70AxtzbFaQiXuOU7Hqi6NvCd69iidOc2YsomtFDfo&cs=1280x0" alt="Сертификат">
-        </div>
-    
-        <p style="text-align: center; color: #666; font-size: 0.9em; margin: 10px 0;">
-            📜 <em>Правила использования:</em>
-        </p>
-    
-        <!-- 2. Правила (обратная сторона) -->
-        <!-- Тут я оставил пунктирную рамку, как тебе нравилось, но размер теперь такой же -->
-        <div class="card-image" style="border: 2px dashed #d1c4e9; box-shadow: none; background: #fafafa;">
-            <img src="https://sun9-84.userapi.com/s/v1/ig2/Z3lIN0O6gUZ9P8t8QoNzHwWRnqzDti5MyCWT4Tr7YV1LeBl0iSqzGxmH6yhfyyFqrIpi1giTniJaVV9toUuoSRka.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=Jzz2rmufC44k-N_iM2JWoM8UtGiR7ptOWhgoAC80WmA&cs=1280x0" alt="Правила использования сертификата">
-        </div>
-        <footer>
+        <div class="gift-section">
+            <h2>🎁 А теперь — наш подарок тебе</h2>
+            <p>
+                Марина, ты дарила нам отдых душой и телом.<br>
+                Теперь пришла наша очередь позаботиться о тебе!
+            </p>
+            <span class="highlight">
+                Сертификат в твой любимый спа — чтобы ты могла отдохнуть от нас, выдохнуть и восстановить силы 🕊️
+            </span>
+        
+            <div class="card-image">
+                <img src="https://sun9-66.userapi.com/s/v1/ig2/Aad2P9xkUUJTV52u7T_UKbz2v76neBa6l63otzJrXbKVOLpZSkXUBenmmqjbvLbrA9EkxJxWknnkCT0EENbd2n2U.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=ad70AxtzbFaQiXuOU7Hqi6NvCd69iidOc2YsomtFDfo&cs=1280x0" alt="Сертификат">
+            </div>
+        
+            <p style="text-align: center; color: #666; font-size: 0.9em; margin: 10px 0;">
+                📜 <em>Правила использования:</em>
+            </p>
+        
+            <div class="card-image" style="border: 2px dashed #d1c4e9; box-shadow: none; background: #fafafa;">
+                <img src="https://sun9-84.userapi.com/s/v1/ig2/Z3lIN0O6gUZ9P8t8QoNzHwWRnqzDti5MyCWT4Tr7YV1LeBl0iSqzGxmH6yhfyyFqrIpi1giTniJaVV9toUuoSRka.jpg?quality=95&as=32x14,48x22,72x33,108x49,160x72,240x109,360x163,480x217,540x244,640x289,720x326,1080x489,1280x579&from=bu&u=Jzz2rmufC44k-N_iM2JWoM8UtGiR7ptOWhgoAC80WmA&cs=1280x0" alt="Правила использования сертификата">
+            </div>
+            
+            <footer>
                 С любовью и бесконечной благодарностью,<br>
                 твои шесть девушек 🤍
-        </footer>
-</div>
+            </footer>
+        </div>
+    </div>
     
-  <!-- Замени весь блок с музыкой на это -->
-<div style="margin: 30px 0;">
-    <button id="play-btn" style="
-        padding: 15px 30px;
-        background: linear-gradient(135deg, #9c27b0, #ba68c8);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        font-size: 1.2em;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(156,39,176,0.4);
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-    ">
-        <span>🎵</span>
-        <span>Включить музыку</span>
-    </button>
-    <p style="font-size: 0.9em; color: #7b1fa2; margin-top: 10px;">
-        Нажмите кнопку, чтобы включить фоновую музыку 💜
-    </p>
-</div>
+    <!-- Аудио -->
+    <audio id="music" loop preload="auto">
+        <source src="https://ia902806.us.archive.org/11/items/psiMaster/psiMaster.mp3" type="audio/mpeg">
+    </audio>
 
-<audio id="music" loop preload="auto">
-    <source src="https://ia902806.us.archive.org/11/items/psiMaster/psiMaster.mp3" type="audio/mpeg">
-</audio>
+    <!-- Скрипт -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("music");
+            const btn = document.getElementById("play-btn");
+            const btnIcon = document.getElementById("btn-icon");
+            const btnText = document.getElementById("btn-text");
+            let isPlaying = false;
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const audio = document.getElementById("music");
-        const btn = document.getElementById("play-btn");
-        const btnText = btn.querySelector("span:last-child");
-        const btnIcon = btn.querySelector("span:first-child");
-        let isPlaying = false;
-
-        btn.addEventListener("click", function() {
-            if (!isPlaying) {
-                audio.play()
-                    .then(() => {
-                        isPlaying = true;
-                        btnText.textContent = "Пауза";
-                        btnIcon.textContent = "⏸️";
-                        btn.style.background = "linear-gradient(135deg, #7b1fa2, #9c27b0)";
-                    })
-                    .catch((err) => {
-                        console.error("Ошибка воспроизведения:", err);
-                        alert("Не удалось воспроизвести музыку. Попробуйте обновить страницу.");
-                    });
-            } else {
-                audio.pause();
-                isPlaying = false;
-                btnText.textContent = "Включить музыку";
-                btnIcon.textContent = "🎵";
-                btn.style.background = "linear-gradient(135deg, #9c27b0, #ba68c8)";
-            }
+            btn.addEventListener("click", function() {
+                if (!isPlaying) {
+                    // Запуск музыки
+                    audio.play()
+                        .then(() => {
+                            isPlaying = true;
+                            btnIcon.textContent = "⏸️";
+                            btnText.textContent = "Музыка играет";
+                            btn.classList.add("playing");
+                            console.log("✅ Музыка запущена");
+                        })
+                        .catch((err) => {
+                            console.error("❌ Ошибка воспроизведения:", err);
+                            btnIcon.textContent = "⚠️";
+                            btnText.textContent = "Ошибка загрузки";
+                            alert("Не удалось загрузить музыку. Проверьте соединение с интернетом.");
+                        });
+                } else {
+                    // Пауза
+                    audio.pause();
+                    isPlaying = false;
+                    btnIcon.textContent = "▶️";
+                    btnText.textContent = "Включить музыку";
+                    btn.classList.remove("playing");
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
